@@ -50,6 +50,13 @@ public class westernPatryManageComponent extends Box {
             }
         });
 
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new updateWesternPatryDialog(jf,"修改中式糕点价格",true).setVisible(true);
+            }
+        });
+
         btnPanel.add(addButton);
         btnPanel.add(deleteButton);
         btnPanel.add(searchButton);
