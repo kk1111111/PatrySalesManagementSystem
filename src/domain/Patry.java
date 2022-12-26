@@ -6,10 +6,10 @@ class Pastry {
     int id;
     String name;
     float price;
-    Date produceDate;
+    String produceDate;
     String state;
 
-    public Pastry(int id, String name, float price, Date produceDate, String state) {
+    public Pastry(int id, String name, float price, String produceDate, String state) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -41,11 +41,11 @@ class Pastry {
         this.price = price;
     }
 
-    public Date getProduceDate() {
+    public String getProduceDate() {
         return this.produceDate;
     }
 
-    public void setProduceDate(Date produceDate) {
+    public void setProduceDate(String produceDate) {
         this.produceDate = produceDate;
     }
 

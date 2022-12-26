@@ -93,7 +93,7 @@ public class ManageGUI {
                     jsp.setRightComponent(new JLabel("这里进行糕点管理"));
                 }else if(chinesePatry.equals(lastPathComponent)){
                     try {
-                        jsp.setRightComponent(new chinesePatryManageComponent());
+                        jsp.setRightComponent(new chinesePatryManageComponent(ManageFrame));
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     } catch (ClassNotFoundException ex) {
@@ -101,7 +101,7 @@ public class ManageGUI {
                     }
                 }else if(westernPatry.equals(lastPathComponent)){
                     try {
-                        jsp.setRightComponent(new westernPatryManageComponent());
+                        jsp.setRightComponent(new westernPatryManageComponent(ManageFrame));
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     } catch (ClassNotFoundException ex) {

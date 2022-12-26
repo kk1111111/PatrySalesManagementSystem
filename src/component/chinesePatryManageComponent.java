@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -15,14 +17,16 @@ public class chinesePatryManageComponent extends Box {
     final int width = 600;
     final int height = 300;
 
+    JFrame jf = null;
     private JTable table;
     private Vector<String> titles;
     private Vector<Vector> tableData;
     private TableModel tableModel;
 
-    public chinesePatryManageComponent() throws SQLException, ClassNotFoundException {
+    public chinesePatryManageComponent(JFrame jf) throws SQLException, ClassNotFoundException {
         super(BoxLayout.Y_AXIS);
 
+        this.jf = jf;
         JPanel btnPanel = new JPanel();
         btnPanel.setMaximumSize(new Dimension(width,50));
         btnPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -31,6 +35,20 @@ public class chinesePatryManageComponent extends Box {
         JButton deleteButton = new JButton("删除");
         JButton searchButton = new JButton("查询");
         JButton updateButton = new JButton("修改");
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new addChinesePatryDialog(jf,"添加中式糕点",true).setVisible(true);
+            }
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new deleteChinesePatryDialog(jf,"删除中式糕点",true).setVisible(true);
+            }
+        });
 
         btnPanel.add(addButton);
         btnPanel.add(deleteButton);
@@ -68,7 +86,7 @@ public class chinesePatryManageComponent extends Box {
             int id = rs.getInt("id");
             String name = rs.getString("name");
             float price = rs.getFloat("price");
-            Date produceDate = rs.getDate("produceDate");
+            String produceDate = rs.getString("produceDate");
             String state = rs.getString("state");
 
             chinesepatry = new Vector();
