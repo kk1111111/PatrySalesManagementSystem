@@ -1,6 +1,8 @@
 package view;
 
 import component.chinesePatryManageComponent;
+import component.promotionComponent;
+import component.saleManageComponent;
 import component.westernPatryManageComponent;
 import utils.pathUtils;
 import utils.screenUtils;
@@ -108,9 +110,15 @@ public class ManageGUI {
                         throw new RuntimeException(ex);
                     }
                 }else if(sale.equals(lastPathComponent)){
-                    jsp.setRightComponent(new JLabel("这里进行糕点销售管理"));
+                    try {
+                        jsp.setRightComponent(new saleManageComponent(ManageFrame));
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (ClassNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }else if(promotion.equals(lastPathComponent)){
-                    jsp.setRightComponent(new JLabel("这里进行优惠活动管理管理"));
+                    jsp.setRightComponent(new promotionComponent(ManageFrame));
                 }
             }
         });

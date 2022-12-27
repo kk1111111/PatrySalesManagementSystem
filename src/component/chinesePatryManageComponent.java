@@ -50,6 +50,13 @@ public class chinesePatryManageComponent extends Box {
             }
         });
 
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new searchChinesePatryDialog(jf,"中式糕点查询",true).setVisible(true);
+            }
+        });
+
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

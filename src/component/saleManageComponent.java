@@ -1,6 +1,6 @@
 package component;
 
-import Dao.westernpatryDao;
+import Dao.saleDao;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,10 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Vector;
 
-public class westernPatryManageComponent extends Box {
+public class saleManageComponent extends Box {
     final int width = 600;
     final int height = 300;
 
@@ -23,7 +22,7 @@ public class westernPatryManageComponent extends Box {
     private Vector<Vector> tableData;
     private TableModel tableModel;
 
-    public westernPatryManageComponent(JFrame jf) throws SQLException, ClassNotFoundException {
+    public saleManageComponent(JFrame jf) throws SQLException, ClassNotFoundException {
         super(BoxLayout.Y_AXIS);
 
         this.jf = jf;
@@ -32,47 +31,29 @@ public class westernPatryManageComponent extends Box {
         btnPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         JButton addButton = new JButton("增加");
-        JButton deleteButton = new JButton("删除");
         JButton searchButton = new JButton("查询");
-        JButton updateButton = new JButton("修改");
 
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new addWesternPatryDialog(jf,"添加西式糕点",true).setVisible(true);
-            }
-        });
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new deleteWesternPatryDialog(jf,"删除西式糕点",true).setVisible(true);
+                new addSaleDialog(jf,"添加销售订单",true).setVisible(true);
             }
         });
 
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new searchWesternPatryDialog(jf,"西式糕点查询",true).setVisible(true);
-            }
-        });
-
-        updateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new updateWesternPatryDialog(jf,"修改西式糕点价格",true).setVisible(true);
+                new searchSaleDialog(jf,"查询某日的订单",true).setVisible(true);
             }
         });
 
         btnPanel.add(addButton);
-        btnPanel.add(deleteButton);
         btnPanel.add(searchButton);
-        btnPanel.add(updateButton);
 
         this.add(btnPanel);
 
         //组装表格
-        String[] ts = {"编号","糕点名称","价格","生产日期","是否出售"};
+        String[] ts = {"编号","订单日期","支付方式","订单总金额"};
         titles = new Vector<>();
         for (String title : ts){
             titles.add(title);
@@ -93,24 +74,23 @@ public class westernPatryManageComponent extends Box {
         JScrollPane scrollPane = new JScrollPane(table);
         this.add(scrollPane);
     }
+
     public Vector<Vector> requestData(Vector<Vector> tableData) throws SQLException, ClassNotFoundException {
-        ResultSet rs = westernpatryDao.selectAll();
-        Vector westernpatry = null;
+        ResultSet rs = saleDao.selectAll();
+        Vector sale = null;
         while(rs.next()){
             int id = rs.getInt("id");
-            String name = rs.getString("name");
-            float price = rs.getFloat("price");
-            String produceDate = rs.getString("produceDate");
-            String state = rs.getString("state");
+            String date = rs.getString("date");
+            String method = rs.getString("method");
+            float sum = rs.getFloat("sum");
 
-            westernpatry = new Vector();
-            westernpatry.add(id);
-            westernpatry.add(name);
-            westernpatry.add(price);
-            westernpatry.add(produceDate);
-            westernpatry.add(state);
+            sale = new Vector();
+            sale.add(id);
+            sale.add(date);
+            sale.add(method);
+            sale.add(sum);
 
-            tableData.add(westernpatry);
+            tableData.add(sale);
         }
         return tableData;
     }

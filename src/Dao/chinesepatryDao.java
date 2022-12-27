@@ -31,6 +31,14 @@ public class chinesepatryDao {
         return count;
     }
 
+    public static int idDelete(int id) throws SQLException, ClassNotFoundException {
+        String sql = "delete from chinesepatry where id=?";
+        PreparedStatement pstmt = JDBCutils.getConnection().prepareStatement(sql);
+        pstmt.setInt(1,id);
+        int count = pstmt.executeUpdate();
+        return count;
+    }
+
     public static int priceUpdate(String name,float newprice) throws SQLException, ClassNotFoundException {
         String sql = "update chinesepatry set price = ? where name = ?";
         PreparedStatement pstmt = JDBCutils.getConnection().prepareStatement(sql);
@@ -40,9 +48,10 @@ public class chinesepatryDao {
         return count;
     }
 
-    public static ResultSet selectName(String name) throws SQLException, ClassNotFoundException {
+    public static ResultSet searchName(String name) throws SQLException, ClassNotFoundException {
         String sql = "select * from chinesepatry where name = ?";
         PreparedStatement pstmt = JDBCutils.getConnection().prepareStatement(sql);
+        pstmt.setString(1,name);
         ResultSet rs = pstmt.executeQuery();
         return rs;
     }

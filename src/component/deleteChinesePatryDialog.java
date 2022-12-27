@@ -18,14 +18,14 @@ public class deleteChinesePatryDialog extends JDialog {
 
         Box vbox = Box.createVerticalBox();
 
-        //组装输入商品名称
-        Box namebox = Box.createHorizontalBox();
-        JLabel namelabel = new JLabel("输入要删除的商品名称:");
-        JTextField nametextfield = new JTextField(15);
+        //组装输入商品编号
+        Box idbox = Box.createHorizontalBox();
+        JLabel idlabel = new JLabel("输入要删除的商品编号:");
+        JTextField idtextfield = new JTextField(15);
 
-        namebox.add(namelabel);
-        namebox.add(Box.createHorizontalStrut(10));
-        namebox.add(nametextfield);
+        idbox.add(idlabel);
+        idbox.add(Box.createHorizontalStrut(10));
+        idbox.add(idtextfield);
 
         Box btnbox = Box.createHorizontalBox();
         JButton deletebtn = new JButton("删除");
@@ -33,10 +33,10 @@ public class deleteChinesePatryDialog extends JDialog {
         deletebtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name = nametextfield.getText().trim();
+                int id = Integer.parseInt(idtextfield.getText().trim());
                 int count2;
                 try {
-                    count2 = chinesepatryDao.nameDelete(name);
+                    count2 = chinesepatryDao.idDelete(id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 } catch (ClassNotFoundException ex) {
@@ -54,7 +54,7 @@ public class deleteChinesePatryDialog extends JDialog {
         btnbox.add(deletebtn);
 
         vbox.add(Box.createVerticalStrut(20));
-        vbox.add(namebox);
+        vbox.add(idbox);
         vbox.add(Box.createVerticalStrut(20));
         vbox.add(btnbox);
 
