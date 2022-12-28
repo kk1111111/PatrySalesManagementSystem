@@ -1,6 +1,7 @@
 package component;
 
 import Dao.saleDao;
+import utils.fileUtils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +9,7 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -32,6 +34,7 @@ public class saleManageComponent extends Box {
 
         JButton addButton = new JButton("增加");
         JButton searchButton = new JButton("查询");
+        JButton exportButton = new JButton("导入文件");
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -47,8 +50,24 @@ public class saleManageComponent extends Box {
             }
         });
 
+        exportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    fileUtils.exportSale();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
         btnPanel.add(addButton);
         btnPanel.add(searchButton);
+        btnPanel.add(exportButton);
 
         this.add(btnPanel);
 

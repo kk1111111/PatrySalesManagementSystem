@@ -57,4 +57,11 @@ public class westernpatryDao {
         ResultSet rs = pstmt.executeQuery();
         return rs;
     }
+
+    public static ResultSet sort() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM patrymanagement.westernpatry order by price desc";
+        PreparedStatement pstmt = JDBCutils.getConnection().prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        return rs;
+    }
 }

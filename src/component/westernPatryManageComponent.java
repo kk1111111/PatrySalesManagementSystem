@@ -1,6 +1,7 @@
 package component;
 
 import Dao.westernpatryDao;
+import utils.fileUtils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -8,6 +9,7 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -35,6 +37,8 @@ public class westernPatryManageComponent extends Box {
         JButton deleteButton = new JButton("删除");
         JButton searchButton = new JButton("查询");
         JButton updateButton = new JButton("修改");
+        JButton sortButton = new JButton("排序");
+        JButton exportButton = new JButton("导入文件");
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -64,10 +68,40 @@ public class westernPatryManageComponent extends Box {
             }
         });
 
+        sortButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    new sortWesternPatryComponent(jf,"按售价降序排列",true).setVisible(true);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        exportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    fileUtils.exportWesternPatry();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
         btnPanel.add(addButton);
         btnPanel.add(deleteButton);
         btnPanel.add(searchButton);
         btnPanel.add(updateButton);
+        btnPanel.add(sortButton);
+        btnPanel.add(exportButton);
 
         this.add(btnPanel);
 
