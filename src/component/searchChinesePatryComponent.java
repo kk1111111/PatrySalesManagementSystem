@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class searchChinesePatryComponent extends JDialog {
+public class searchChinesePatryComponent extends JDialog {//显示中式糕点查询结果的界面
     final int width = 400;
     final int height = 150;
 

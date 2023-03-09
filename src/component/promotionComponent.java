@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class promotionComponent extends Box {
+public class promotionComponent extends Box {//销售活动管理界面
 
     JFrame jf = null;
     public promotionComponent(JFrame jf) {

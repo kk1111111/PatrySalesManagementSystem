@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class RegisterGUI {
+public class RegisterGUI {//注册界面
     JFrame registerFrame = new JFrame("注册");
 
     final int width = 600;
@@ -25,7 +25,7 @@ public class RegisterGUI {
         registerFrame.setResizable(false);
         registerFrame.setIconImage(ImageIO.read(new File(pathUtils.getRealPath("icon2.jpg"))));
 
-        //
+        //设置注册界面的背景
         BackgroundPanel registerBG = new BackgroundPanel(ImageIO.read(new File(pathUtils.getRealPath("back2.jpg"))));
 
         //总box
@@ -64,31 +64,34 @@ public class RegisterGUI {
             public void actionPerformed(ActionEvent e) {
                 String username = rUserTextField.getText().trim();
                 String password = rPasswordTextField.getText().trim();
-
-                int count;
-                try {
-                    count = accountDao.addAccount(username, password);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                } catch (ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-                if (count > 0) {
-                    JOptionPane.showMessageDialog(registerFrame,"注册成功！");
+                if (username.equals("") || password.equals("")) {
+                    JOptionPane.showMessageDialog(registerFrame, "用户名或者密码不能为空！");
+                } else {
+                    int count;
                     try {
-                        new MainGUI().init();
-                        registerFrame.dispose();
-                    } catch (Exception ex) {
+                        count = accountDao.addAccount(username, password);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (ClassNotFoundException ex) {
                         throw new RuntimeException(ex);
                     }
+                    if (count > 0) {
+                        JOptionPane.showMessageDialog(registerFrame, "注册成功！");
+                        try {
+                            new MainGUI().init();
+                            registerFrame.dispose();
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
 
-                }else {
-                    JOptionPane.showMessageDialog(registerFrame,"注册失败！");
-                    try {
-                        new MainGUI().init();
-                        registerFrame.dispose();
-                    } catch (Exception ex) {
-                        throw new RuntimeException(ex);
+                    } else {
+                        JOptionPane.showMessageDialog(registerFrame, "注册失败！");
+                        try {
+                            new MainGUI().init();
+                            registerFrame.dispose();
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
                     }
                 }
             }
@@ -125,7 +128,7 @@ public class RegisterGUI {
         registerFrame.setVisible(true);
     }
 
-    /*public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         new RegisterGUI().init();
-    }*/
+    }
 }

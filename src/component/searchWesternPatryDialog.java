@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class searchWesternPatryDialog extends JDialog {
+public class searchWesternPatryDialog extends JDialog {//查询西式蛋糕对话框
     final int width = 400;
     final int height = 150;
 

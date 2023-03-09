@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class searchSaleComponent extends JDialog {
+public class searchSaleComponent extends JDialog {//显示销售订单查询结果的界面
     final int width = 600;
     final int height = 300;
 

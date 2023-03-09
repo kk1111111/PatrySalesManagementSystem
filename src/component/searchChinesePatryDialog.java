@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class searchChinesePatryDialog extends JDialog{
+public class searchChinesePatryDialog extends JDialog{//查询中式糕点对话框
     final int width = 400;
     final int height = 150;
 

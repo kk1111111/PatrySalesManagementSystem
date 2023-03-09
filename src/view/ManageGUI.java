@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.SQLException;
 
-public class ManageGUI {
+public class ManageGUI {//管理界面
     JFrame ManageFrame = new JFrame("糕点销售系统");
     final int width = 800;
     final int height = 400;
@@ -135,6 +135,7 @@ public class ManageGUI {
         new ManageGUI().init();
     }
 
+    //自定义Render，方便给每个节点设置图片
     private class MyRenderer extends DefaultTreeCellRenderer{
         private ImageIcon systemIcon = null;
         private ImageIcon patryIcon = null;

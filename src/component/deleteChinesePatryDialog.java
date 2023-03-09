@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class deleteChinesePatryDialog extends JDialog {
+public class deleteChinesePatryDialog extends JDialog {//删除中式糕点对话框
     final int width = 400;
     final int height = 150;
     public deleteChinesePatryDialog(JFrame jf,String title,boolean isModel){
@@ -46,7 +46,7 @@ public class deleteChinesePatryDialog extends JDialog {
                 if(count2>0){
                     JOptionPane.showMessageDialog(jf,"删除成功！");
                 }else {
-                    JOptionPane.showMessageDialog(jf,"添加失败！");
+                    JOptionPane.showMessageDialog(jf,"删除失败！");
                 }
             }
         });

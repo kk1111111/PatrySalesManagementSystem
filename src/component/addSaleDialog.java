@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class addSaleDialog extends JDialog {
+public class addSaleDialog extends JDialog {//添加贸易订单对话框
     final int width = 400;
     final int height = 300;
 

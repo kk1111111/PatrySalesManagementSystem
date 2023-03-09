@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class updateWesternPatryDialog extends JDialog {
+public class updateWesternPatryDialog extends JDialog {//修改西式糕点价格对话框
     final int width = 400;
     final int height = 200;
 

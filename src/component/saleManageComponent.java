@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class saleManageComponent extends Box {
+public class saleManageComponent extends Box {//销售订单管理界面
     final int width = 600;
     final int height = 300;
 

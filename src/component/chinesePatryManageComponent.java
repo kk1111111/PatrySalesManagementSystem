@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 
-public class chinesePatryManageComponent extends Box {
+public class chinesePatryManageComponent extends Box {//管理中式糕点信息的页面
     final int width = 600;
     final int height = 300;
 

@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class addWesternPatryDialog extends JDialog{
+public class addWesternPatryDialog extends JDialog{//添加西式糕点对话框
     final int width = 400;
     final int height = 300;
 

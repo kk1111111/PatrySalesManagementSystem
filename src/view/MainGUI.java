@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class MainGUI {
+public class MainGUI {//登录界面，所有界面的入口
     JFrame mainframe = new JFrame("糕点店销售系统");
     final int width = 600;
     final int heigt = 300;
@@ -22,9 +22,9 @@ public class MainGUI {
         mainframe.setBounds((screenUtils.getScreenWidth()-width)/2,(screenUtils.getScreenHeight()-heigt)/2,width,heigt);
         mainframe.setResizable(false);
         mainframe.setIconImage(ImageIO.read(new File(pathUtils.getRealPath("icon2.jpg"))));
-        //
+        //设置背景
         BackgroundPanel BG = new BackgroundPanel(ImageIO.read(new File(pathUtils.getRealPath("back2.jpg"))));
-        //
+        //组装总box
         Box loginBox = Box.createVerticalBox();
         Font font = new Font("宋体",Font.PLAIN,25);
 
@@ -76,7 +76,7 @@ public class MainGUI {
                 int count;
 
                 try {
-                    count = accountDao.checkAccount(username,password);
+                    count = accountDao.checkAccount(username,password);//检查是否存在这组账号密码
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 } catch (ClassNotFoundException ex) {
